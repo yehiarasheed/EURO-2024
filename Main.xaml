@@ -110,6 +110,10 @@
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="992,5462.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -132,7 +136,7 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:ReadRange AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="929.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="EURO2024 Roster" WorkbookPath="C:\Users\Yehia\Desktop\Raya Internship\Euro2024\EURO_2024_roster_202400608.xlsx">
+    <ui:ReadRange AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="929.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="EURO2024 Roster">
       <ui:ReadRange.DataTable>
         <OutArgument x:TypeArguments="sd:DataTable">
           <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">out_dataTable</CSharpReference>
@@ -149,6 +153,11 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadRange.WorkbookPath>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_136">@"Additional Files\Inputs\EURO_2024_roster_202400608.xlsx"</CSharpValue>
+        </InArgument>
+      </ui:ReadRange.WorkbookPath>
     </ui:ReadRange>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="929.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info">
       <ui:LogMessage.Message>
@@ -284,7 +293,7 @@
                                 </ui:WriteRange.SheetName>
                                 <ui:WriteRange.WorkbookPath>
                                   <InArgument x:TypeArguments="x:String">
-                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">"C:\\Users\\Yehia\\Desktop\\Raya Internship\\Euro2024\\" + out_country.ToString() + ".xlsx"</CSharpValue>
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_137">@"Additional Files\Outputs\" + out_country.ToString() + ".xlsx"</CSharpValue>
                                   </InArgument>
                                 </ui:WriteRange.WorkbookPath>
                               </ui:WriteRange>
@@ -380,12 +389,17 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ReadRange AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="641.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_4" Range="A1:A25" SheetName="Euro2024 Teams" WorkbookPath="C:\Users\Yehia\Desktop\Raya Internship\Euro2024\EURO_2024_roster_202400608.xlsx">
+                      <ui:ReadRange AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="641.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_4" Range="A1:A25" SheetName="Euro2024 Teams">
                         <ui:ReadRange.DataTable>
                           <OutArgument x:TypeArguments="sd:DataTable">
                             <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">out_dataTableAll</CSharpReference>
                           </OutArgument>
                         </ui:ReadRange.DataTable>
+                        <ui:ReadRange.WorkbookPath>
+                          <InArgument x:TypeArguments="x:String">
+                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_138">@"Additional Files\Inputs\EURO_2024_roster_202400608.xlsx"</CSharpValue>
+                          </InArgument>
+                        </ui:ReadRange.WorkbookPath>
                       </ui:ReadRange>
                       <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="641.6,1516" sap2010:WorkflowViewState.IdRef="ForEachRow_12">
                         <ui:ForEachRow.Body>
@@ -496,7 +510,7 @@
                                               </ui:WriteRange.SheetName>
                                               <ui:WriteRange.WorkbookPath>
                                                 <InArgument x:TypeArguments="x:String">
-                                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">"C:\\Users\\Yehia\\Desktop\\Raya Internship\\Euro2024\\" + out_country.ToString() + ".xlsx"</CSharpValue>
+                                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_139">@"Additional Files\Outputs\" + out_country.ToString() + ".xlsx"</CSharpValue>
                                                 </InArgument>
                                               </ui:WriteRange.WorkbookPath>
                                             </ui:WriteRange>
